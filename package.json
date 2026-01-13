@@ -1,0 +1,13 @@
+{
+  "name": "opencode-add-oai-instruction",
+  "version": "0.0.1",
+  "description": "OpenCode plugin to add instruction from OpenAI-compatible API requests",
+  "type": "module",
+  "main": "index.mjs",
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "openai"
+  ],
+  "license": "MIT"
+}
