@@ -1,5 +1,7 @@
 /**
- * OpenCode plugin to omit max_output_tokens/max_tokens from API requests.
+ * OpenCode plugin to inject model-specific instructions from Markdown files.
+ *
+ * It also removes max_output_tokens/max_tokens for gpt* models.
  *
  * Configuration in opencode.json:
  *
