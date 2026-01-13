@@ -21,7 +21,7 @@ bun add github:kiritoko1029/opencode-add-oai-instruction
 
 ```jsonc
 {
-  "plugins": [
+  "plugin": [
     "@kiritoko1029/opencode-add-oai-instruction" // 添加这一行
   ],
   "provider": {

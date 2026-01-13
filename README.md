@@ -21,7 +21,7 @@ Add to your `opencode.json`:
 
 ```jsonc
 {
-  "plugins": [
+  "plugin": [
     "@kiritoko1029/opencode-add-oai-instruction" // Add this line
   ],
   "provider": {
