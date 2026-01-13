@@ -1,5 +1,7 @@
 # opencode-add-oai-instruction
 
+[简体中文](README.zh-CN.md)
+
 [OpenCode](https://github.com/anomalyco/opencode) plugin that injects an `instructions` string into OpenAI-compatible API requests.
 
 The instructions are loaded from a Markdown file based on the request's `model`.
@@ -40,7 +42,13 @@ Add to your `opencode.json`:
 
 ## Prompt Files
 
-Put your prompt Markdown files in the same directory as this plugin's `index.mjs`.
+This package ships with built-in prompt Markdown files (so you typically don't need to create anything).
+
+Prompt source: https://github.com/openai/codex/tree/main/codex-rs/core
+
+### Custom prompts (optional)
+
+If you want to use your own prompt (override the built-in one, or add a prompt for another model), put a Markdown file in the same directory as this plugin's `index.mjs`.
 
 File name format:
 
@@ -48,13 +56,13 @@ File name format:
 
 Examples:
 
-- If your request model is `gpt-5.2-codex`, create `gpt-5.2-codex_prompt.md`
-- If your request model is `gpt-5.2`, create either `gpt-5.2_prompt.md` or `gpt_5_2_prompt.md`
+- `model="gpt-5.2-codex"` → `gpt-5.2-codex_prompt.md`
+- `model="gpt-5.2"` → `gpt-5.2_prompt.md` (or `gpt_5_2_prompt.md`)
 
 Notes:
 
 - Matching is case-insensitive.
-- If no matching file is found, the plugin leaves `instructions` unchanged.
+- If no matching file is found, the plugin falls back to a short built-in `instructions` (unless the request already includes a non-empty `instructions`).
 
 ## How It Works
 

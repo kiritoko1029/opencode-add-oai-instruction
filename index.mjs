@@ -31,6 +31,14 @@ let addInstruction = false;
 /** @type {Map<string, string | null>} */
 const instructionCache = new Map();
 
+const DEFAULT_INSTRUCTIONS = `You are a helpful coding assistant.
+- Be concise and direct.
+- Follow the user's requirements; ask one clarifying question if needed.
+- Don't guess or fabricate details.
+- Prefer minimal, safe changes.
+- Don't commit or push unless explicitly asked.
+- Reply in plain text.`;
+
 function toSafeFilenameKey(value) {
   return value
     .toLowerCase()
@@ -113,9 +121,16 @@ if (typeof originalFetch === "function") {
     }
 
     // 根据模型不同 使用不同的提示词
-    const instructions = await loadInstructionForModel(model);
-    if (instructions !== null) {
-      parsed.instructions = instructions;
+    const fileInstructions = await loadInstructionForModel(model);
+    if (typeof fileInstructions === "string" && fileInstructions.trim() !== "") {
+      parsed.instructions = fileInstructions;
+    } else {
+      const existingInstructions = parsed.instructions;
+      const hasExistingInstructions =
+        typeof existingInstructions === "string" && existingInstructions.trim() !== "";
+      if (!hasExistingInstructions) {
+        parsed.instructions = DEFAULT_INSTRUCTIONS;
+      }
     }
 
     return originalFetch.call(this, input, { ...init, body: JSON.stringify(parsed) });
