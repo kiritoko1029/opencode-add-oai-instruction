@@ -1,5 +1,5 @@
 {
-  "name": "opencode-add-oai-instruction",
+  "name": "@kiritoko1029/opencode-add-oai-instruction",
   "version": "0.0.1",
   "description": "OpenCode plugin for adding instructions from OpenAI-compatible API requests",
   "type": "module",
